@@ -102,7 +102,7 @@ at_7d_dir = at_dir / '7d'
 at_14d_dir = at_dir / '14d'
 at_7d_files = list(sorted(at_7d_dir.glob('*/*.zip')))
 last_archive = Archive(path=list(sorted(at_14d_dir.glob('*/*.zip')))[-1])
-archives = [Archive(path=p) for p in at_14d_files]
+archives = [Archive(path=p) for p in at_7d_files]
 
 # All keys that were ever added
 all_keys: Set[TEK] = set()
