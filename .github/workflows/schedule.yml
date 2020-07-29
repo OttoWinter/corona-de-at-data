@@ -1,0 +1,27 @@
+name: Download latest data
+
+on:
+  workflow_dispatch:
+    inputs: {}
+  schedule:
+    - cron: '2/15 * * * *'
+
+jobs:
+  download-data:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+    - run: pip install -r requirements.txt
+    - run: python3 download_data.py
+    - run: |
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+        git add .
+        if ! git diff-index --quiet HEAD --; then
+          git commit -m "Update data"
+          git push
+        fi
+    - run: python3 at_stop_corona.dump.py
