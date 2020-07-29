@@ -25,3 +25,9 @@ jobs:
           git push
         fi
     - run: python3 at_stop_corona_dump.py
+
+    - run: python3 at_stop_corona_dump.py >at-processed.txt
+    - uses: actions/upload-artifact@v2
+      with:
+        name: at-processed
+        path: at-processed.txt
