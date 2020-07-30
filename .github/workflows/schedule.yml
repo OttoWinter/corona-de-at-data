@@ -17,8 +17,8 @@ jobs:
     - run: pip install -r requirements.txt
     - run: python3 download_data.py
     - run: |
-        git config user.name github-actions
-        git config user.email github-actions@github.com
+        git config user.name "Otto Winter [bot]"
+        git config user.email OttoWinter@users.noreply.github.com
         git add .
         if ! git diff-index --quiet HEAD --; then
           git commit -m "Update data"
